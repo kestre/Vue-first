@@ -5,10 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
+    <div id="app"></div>
 
+    <script>
+        //创建Vue实例，得到ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'ok'
+            },
+            methods: {
+                show() {
+                    console.log('执行了show方法')
+                },
+
+            },
+            beforeCreate() { //这是我们遇到的第一个生命周期函数，表示实例完全被创建出来之前，会执行它
+                // console.log(this.msg);
+                // this.show()
+                // 注意：在 beforeCreate 生命周期函数执行的时候，data 和 methods 中的数据还没有初始化
+            },
+            created() {
+                // console.log(this.msg);
+                // this.show()
+                // 在 created中，data 和 methods 都已经被初始化好了
+                // 如果要调用 methods 中的方法，或者操作 data 中的数据，最早，只要在 created 中操作
+            },
+        })
+    </script>
 </body>
 
 </html>
